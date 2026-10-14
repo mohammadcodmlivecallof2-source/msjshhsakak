@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090909">
+<meta name="description" content="Reralo - بوتیک پوشاک مردانه">
+<title>RERALO | Men's Boutique</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+:root{--bg:#090909;--panel:#171719;--line:#303034;--muted:#a3a3aa;--white:#f6f6f7}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at top,#29292d 0,transparent 42%),var(--bg);color:var(--white);font-family:Vazirmatn,Tahoma,sans-serif;line-height:1.85}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.wrap{width:min(1100px,92%);margin:auto}
+.glass{background:rgba(255,255,255,.045);border:1px solid #ffffff16;border-radius:22px;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+header{position:sticky;top:0;z-index:20;background:#090909d9;backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:15px;min-height:72px}
+.logo{font-size:27px;font-weight:900;letter-spacing:3px;line-height:1.2}
+.logo small{display:block;text-align:center;font-size:9px;letter-spacing:3px;color:#999}
+.navlinks{display:flex;gap:18px;font-size:12px;color:#ccc}
+.btn,.cartbtn{display:inline-flex;justify-content:center;align-items:center;gap:7px;padding:11px 16px;border:1px solid #ffffff22;border-radius:13px;background:#f3f3f5;color:#111;font-weight:800;font-size:12px}
+.btn.secondary{background:#ffffff09;color:#fff}
+.btn:hover{opacity:.85}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding-top:70px;padding-bottom:45px}
+.eyebrow{direction:ltr;font-size:11px;letter-spacing:3px;color:#aaa}
+h1{font-size:clamp(43px,7vw,78px);line-height:1.2;margin:14px 0}
+h1 span{color:#85858c}
+.hero p{font-size:14px;color:#aaa;max-width:480px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}
+.hero-art{min-height:300px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;background:radial-gradient(ellipse,#444449,#151517 70%)}
+.hero-art:before{content:"R";position:absolute;font-size:260px;font-weight:900;color:#ffffff0b}
+.art-copy{position:relative;text-align:center}
+.art-copy strong{font-size:38px;letter-spacing:5px;display:block}
+.art-copy small{font-size:10px;letter-spacing:4px;color:#aaa;direction:ltr}
+section{scroll-margin-top:90px}
+.section{padding:30px 0}
+.head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-bottom:18px}
+.head h2{font-size:24px;margin:0}
+.muted{color:var(--muted);font-size:12px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:3px 0 14px}
+.chip{white-space:nowrap;background:transparent;border:1px solid var(--line);color:#ccc;padding:7px 13px;border-radius:30px;font-size:12px}
+.chip.active{background:#eee;color:#111}
+.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.product{border:1px solid #ffffff13;background:linear-gradient(145deg,#202023,#111112);border-radius:20px;overflow:hidden}
+.product-image{height:155px;background:radial-gradient(ellipse at center,#414146,#19191b 75%);display:flex;align-items:center;justify-content:center;position:relative}
+.product-image .emoji{font-size:62px;filter:grayscale(1)}
+.tag{position:absolute;top:9px;right:9px;background:#eee;color:#111;padding:2px 9px;border-radius:8px;font-size:10px}
+.product-info{padding:13px}
+.product-info h3{margin:0;font-size:14px}
+.product-info p{font-size:11px;color:#999;margin:2px 0 8px}
+.field{margin:10px 0}
+.field label{display:block;font-size:11px;color:#ccc;margin-bottom:5px}
+.field input,.field select,.field textarea{width:100%;padding:11px;background:#0c0c0d;border:1px solid #353539;border-radius:11px;color:white;outline:none;min-width:0}
+.field textarea{min-height:90px;resize:vertical}
+.field select option{background:#171719}
+.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap}
+.price{font-size:12px;font-weight:800}
+.add{background:#eee;color:#111;border:0;border-radius:10px;padding:8px 11px;font-size:11px;font-weight:800}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.panel{padding:20px}
+.panel h3{margin:0 0 14px}
+.cart-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px;background:#101011;border:1px solid #ffffff12;border-radius:13px;margin-bottom:9px}
+.cart-item strong{font-size:12px}
+.cart-item small{display:block;color:#aaa;font-size:10px}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:27px;height:27px;border-radius:8px;background:#29292c;color:white;border:1px solid #555}
+.total{border-top:1px solid var(--line);margin-top:14px;padding:14px 0;display:flex;justify-content:space-between;gap:10px;font-weight:800}
+.note{font-size:11px;color:#aaa;margin:10px 0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.info{padding:12px 0;border-bottom:1px solid #ffffff13;font-size:13px;overflow-wrap:anywhere}
+.info:last-child{border:0}
+.info .label{display:block;color:#999;font-size:11px}
+.info b{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.copy{margin-right:6px;padding:4px 8px;border:1px solid #444;background:#222;color:#fff;border-radius:7px;font-size:10px}
+.track{display:none;margin-top:15px;padding:15px;border:1px dashed #777;border-radius:14px;overflow-wrap:anywhere}
+.track code{font-size:18px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.feature{padding:17px}
+.feature strong{display:block;margin:6px 0}
+.feature p{font-size:11px;color:#aaa;margin:0}
+footer{margin-top:35px;border-top:1px solid var(--line);padding:28px 0}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer p{font-size:11px;color:#888}
+.mobile{display:none;position:fixed;bottom:10px;left:10px;right:10px;z-index:30;grid-template-columns:repeat(4,1fr);background:#202023ed;backdrop-filter:blur(18px);border:1px solid #ffffff22;border-radius:17px;padding:7px}
+.mobile a{text-align:center;font-size:10px;color:#ddd}
+.mobile span{display:block;font-size:18px}
+#toast{display:none;position:fixed;z-index:50;bottom:78px;left:50%;transform:translateX(-50%);background:#eee;color:#111;border-radius:12px;padding:10px 16px;font-size:12px;width:max-content;max-width:90%}
+@media(max-width:700px){
+.navlinks{display:none}.hero{grid-template-columns:1fr;padding-top:42px;gap:20px}.hero-art{min-height:220px}.hero-art:before{font-size:190px}
+.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.product-image{height:130px}.product-image .emoji{font-size:49px}.product-info{padding:10px}.product-info h3{font-size:12px}.product-info p{font-size:10px}.price{font-size:11px}.add{padding:7px 9px}
+.grid2{grid-template-columns:1fr}.features{grid-template-columns:1fr}.panel{padding:15px}.mobile{display:grid}body{padding-bottom:80px}.head h2{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap nav">
+<a href="#home" class="logo">RERALO<small>MEN'S BOUTIQUE</small></a>
+<nav class="navlinks">
+<a href="#shop">فروشگاه</a><a href="#order">سبد خرید</a><a href="#tracking">پیگیری</a><a href="#support">پشتیبانی</a><a href="#address">آدرس</a>
+</nav>
+<a class="btn" href="#order">سبد خرید <span id="cartCount">۰</span></a>
+</div>
+</header>
+
+<main>
+<section class="wrap hero" id="home">
+<div>
+<div class="eyebrow">RERALO / THE MEN'S EDIT</div>
+<h1>استایل تو،<br><span>قانون تو.</span></h1>
+<p>به دنیای Reralo خوش اومدی؛ انتخابی برای استایل مردانه، از آیتم‌های روزمره تا جزئیات خاص استایل خیابانی.</p>
+<div class="actions">
+<a class="btn" href="#shop">مشاهده محصولات ↙</a>
+<a class="btn secondary" href="https://t.me/Reralo" target="_blank" rel="noopener">پشتیبانی تلگرام ↗</a>
+</div>
+<p class="eyebrow">PREMIUM LOOK · MODERN MEN</p>
+</div>
+<div class="hero-art glass"><div class="art-copy"><strong>RERALO</strong><small>OWN YOUR STYLE</small><p>MEN'S COLLECTION</p></div></div>
+</section>
+
+<section class="wrap section" id="shop">
+<div class="head"><div><h2>کالکشن مردانه</h2><div class="muted">محصولت رو انتخاب کن.</div></div><span class="muted" id="productCount"></span></div>
+<div class="chips" id="categories"></div>
+<div class="products" id="products"></div>
+</section>
+
+<section class="wrap section">
+<div class="head"><div><h2>تجربه خرید Reralo</h2><div class="muted">استایل، پشتیبانی و پیگیری</div></div></div>
+<div class="features">
+<div class="glass feature"><span>◈</span><strong>استایل مردانه</strong><p>پوشاک و اکسسوری برای استایل روزانه.</p></div>
+<div class="glass feature"><span>✈</span><strong>پشتیبانی تلگرام</strong><p>ارتباط مستقیم برای هماهنگی سفارش.</p></div>
+<div class="glass feature"><span>▤</span><strong>کد پیگیری</strong><p>شناسه سفارش برای مراجعه و پیگیری.</p></div>
+</div>
+</section>
+
+<section class="wrap section" id="order">
+<div class="head"><div><h2>سبد خرید و ثبت سفارش</h2><div class="muted">اطلاعات رو بررسی کن و سفارش رو آماده کن.</div></div></div>
+<div class="grid2">
+<div class="glass panel">
+<h3>🛍 محصولات انتخاب‌شده</h3>
+<div id="cartItems"><div class="muted">سبد خرید خالی است.</div></div>
+<div class="total"><span>مبلغ محصولات</span><span id="cartTotal">۰ تومان</span></div>
+<div class="note">قیمت بدلیجات در مبلغ بالا محاسبه نشده و باید از پشتیبانی استعلام شود. هزینه ارسال نیز جداگانه تأیید می‌شود.</div>
+<button class="btn" style="width:100%" onclick="submitOrder()">ثبت سفارش و دریافت کد پیگیری</button>
+<div id="trackResult" class="track">
+<div class="muted">کد پیگیری سفارش</div><code id="trackCode"></code>
+<p class="note">این کد را نگه دار.</p>
+<button class="btn secondary" onclick="copyTracking()">کپی کد</button>
+</div>
+</div>
+<div class="glass panel">
+<h3>📦 مشخصات خریدار</h3>
+<form id="orderForm">
+<div class="field"><label for="customerName">نام و نام خانوادگی</label><input id="customerName" required maxlength="80" placeholder="نام مشتری"></div>
+<div class="row">
+<div class="field"><label for="customerPhone">شماره تماس</label><input id="customerPhone" required type="tel" maxlength="20" placeholder="شماره موبایل"></div>
+<div class="field"><label for="customerPostal">کد پستی مقصد</label><input id="customerPostal" inputmode="numeric" maxlength="10" placeholder="کد پستی"></div>
+</div>
+<div class="field"><label for="customerAddress">آدرس تحویل سفارش</label><textarea id="customerAddress" required maxlength="500" placeholder="استان، شهر، خیابان، پلاک و واحد"></textarea></div>
+<div class="field"><label for="orderNote">توضیحات سفارش</label><textarea id="orderNote" maxlength="500" placeholder="رنگ یا توضیحات دیگر"></textarea></div>
+<button type="submit" class="btn secondary" style="width:100%">بررسی اطلاعات</button>
+</form>
+<p class="note">با ثبت سفارش، پیام آماده در گفت‌وگوی پشتیبانی تلگرام باز می‌شود. ارسال نهایی را در تلگرام تأیید کن.</p>
+</div>
+</div>
+</section>
+
+<section class="wrap section" id="tracking">
+<div class="glass panel">
+<h2>پیگیری سفارش</h2>
+<p class="muted">کدی را که قبلاً دریافت کردی وارد کن.</p>
+<div class="row">
+<div class="field"><label for="searchTracking">کد پیگیری</label><input id="searchTracking" placeholder="RR-ABC123"></div>
+<div class="field" style="display:flex;align-items:end"><button class="btn" style="width:100%" onclick="findTracking()">بررسی کد</button></div>
+</div>
+<div id="trackingLookup" class="note"></div>
+<p class="note">وضعیت واقعی ارسال باید توسط پشتیبانی تأیید شود. اطلاعات این نسخه فقط در همین مرورگر ذخیره می‌شود.</p>
+</div>
+</section>
+
+<section class="wrap section" id="support">
+<div class="head"><div><h2>مرکز پشتیبانی</h2><div class="muted">ثبت تیکت و ارتباط با Reralo</div></div></div>
+<div class="grid2">
+<div class="glass panel">
+<h3>🎫 ثبت تیکت</h3>
+<form id="ticketForm">
+<div class="field"><label for="ticketName">نام مشتری</label><input id="ticketName" required maxlength="80" placeholder="نام شما"></div>
+<div class="field"><label for="ticketPhone">شماره تماس</label><input id="ticketPhone" required maxlength="20" placeholder="شماره تماس"></div>
+<div class="field"><label for="ticketSubject">موضوع</label><select id="ticketSubject"><option>پیگیری سفارش</option><option>سؤال درباره سایز و موجودی</option><option>مشکل پرداخت</option><option>ارسال و تحویل</option><option>تعویض یا مرجوعی</option><option>سایر موارد</option></select></div>
+<div class="field"><label for="ticketMessage">شرح درخواست</label><textarea id="ticketMessage" required maxlength="1500" placeholder="درخواست خودت رو بنویس..."></textarea></div>
+<button class="btn" style="width:100%" type="submit">آماده‌سازی تیکت در تلگرام</button>
+</form>
+<p class="note">این فرم پیام تیکت را آماده می‌کند؛ برای ثبت خودکار دائمی باید ربات به سرور متصل شود.</p>
+</div>
+<div class="glass panel">
+<h3>ارتباط مستقیم</h3>
+<div class="info">✈ پشتیبانی تلگرام <a href="https://t.me/Reralo" target="_blank" rel="noopener">@Reralo ↗</a></div>
+<div class="info">🤖 ربات تلگرام <a href="https://t.me/Rrralobot" target="_blank" rel="noopener">@Rrralobot ↗</a></div>
+<div class="info">☎ شماره تماس اول <a href="tel:09002227940" dir="ltr">09002227940</a></div>
+<div class="info">☎ شماره تماس دوم <a href="tel:09210587469" dir="ltr">09210587469</a></div>
+<a class="btn secondary" style="width:100%;margin-top:15px" href="https://t.me/Reralo" target="_blank" rel="noopener">ورود به پشتیبانی ↗</a>
+</div>
+</div>
+</section>
+
+<section class="wrap section" id="address">
+<div class="head"><div><h2>آدرس و اطلاعات پرداخت</h2><div class="muted">بوتیک Reralo</div></div></div>
+<div class="glass panel">
+<div class="info"><span class="label">📍 آدرس بوتیک</span>اندیشه، بلوار دنیامالی، ارغوان هشتم غربی، بین رشادت و صابر (محله‌ی اندیشه فاز ۱)، پاساژ ماهان، پلاک ۶</div>
+<div class="info"><span class="label">کد پستی بوتیک</span><b>3168945646</b><button class="copy" onclick="copyText('3168945646')">کپی</button></div>
+<div class="info"><span class="label">شماره کارت اول</span><b>6219861426761408</b><button class="copy" onclick="copyText('6219861426761408')">کپی کارت</button></div>
+<div class="info"><span class="label">شماره کارت دوم</span><b>6104331010202886</b><button class="copy" onclick="copyText('6104331010202886')">کپی کارت</button></div>
+<a class="btn secondary" style="margin-top:15px" href="https://www.google.com/maps/search/?api=1&query=پاساژ+ماهان+اندیشه" target="_blank" rel="noopener">جست‌وجوی آدرس روی نقشه ↗</a>
+<p class="note">قبل از واریز، نام صاحب حساب و مبلغ نهایی را از پشتیبانی تأیید کن.</p>
+</div>
+</section>
+
+<section class="wrap section" id="rules">
+<div class="glass panel">
+<h2>قوانین خرید</h2>
+<div class="info">۰۱. پیش از پرداخت، موجودی و سایز محصول را تأیید کن.</div>
+<div class="info">۰۲. کد پیگیری را تا پایان فرایند خرید نگه دار.</div>
+<div class="info">۰۳. شرایط ارسال، تعویض و مرجوعی را از پشتیبانی بپرس.</div>
+<div class="info">۰۴. سفارش پس از تأیید جزئیات توسط فروشگاه قطعی می‌شود.</div>
+</div>
+</section>
+</main>
+
+<footer><div class="wrap footer-inner"><div><div class="logo">RERALO</div><p>MEN'S BOUTIQUE · OWN YOUR STYLE</p></div><div><a href="https://t.me/Reralo" target="_blank" rel="noopener">پشتیبانی تلگرام</a><p>© Reralo — تمامی حقوق محفوظ است.</p></div></div></footer>
+
+<nav class="mobile">
+<a href="#home"><span>⌂</span>خانه</a>
+<a href="#shop"><span>◈</span>فروشگاه</a>
+<a href="#order"><span>▣</span>سبد خرید</a>
+<a href="#support"><span>✉</span>پشتیبانی</a>
+</nav>
+<div id="toast"></div>
+
+<script>
+const SUPPORT="Reralo";
+
+const categories=["همه محصولات","دورس","تیشرت","شلوار","جاگر","لانگ اسلیو","وست","کفش","بدلیجات","کاپشن","کمربند","کلاه کپ"];
+
+const products=[
+{id:1,name:"دورس",cat:"دورس",price:2290000,emoji:"🧥",desc:"استایل روزمره",sizes:["M","L","XL","XXL"]},
+{id:2,name:"تیشرت",cat:"تیشرت",price:1790000,emoji:"👕",desc:"استایل مینیمال",sizes:["M","L","XL","XXL"]},
+{id:3,name:"شلوار",cat:"شلوار",price:2490000,emoji:"👖",desc:"استایل روزانه",sizes:["30","32","34","36","38"]},
+{id:4,name:"جاگر",cat:"جاگر",price:1290000,emoji:"👖",desc:"راحت و اسپرت",sizes:["M","L","XL","XXL"]},
+{id:5,name:"لانگ اسلیو",cat:"لانگ اسلیو",price:2290000,emoji:"👕",desc:"استایل لایه‌ای",sizes:["M","L","XL","XXL"]},
+{id:6,name:"وست",cat:"وست",price:1790000,emoji:"🦺",desc:"استایل مدرن",sizes:["M","L","XL","XXL"]},
+{id:7,name:"کفش",cat:"کفش",price:2690000,emoji:"👟",desc:"سایزهای ۴۱ تا ۴۴",sizes:["41","42","43","44"]},
+{id:8,name:"بدلیجات",cat:"بدلیجات",price:null,emoji:"⛓️",desc:"استعلام قیمت در پیوی",sizes:["فری‌سایز"]},
+{id:9,name:"کاپشن",cat:"کاپشن",price:3990000,emoji:"🧥",desc:"استایل زمستانی",sizes:["M","L","XL","XXL"]},
+{id:10,name:"کمربند کروم هارتز",cat:"کمربند",price:1190000,emoji:"〰️",desc:"اکسسوری خاص",sizes:["100","110","120","130"]},
+{id:11,name:"کمربند بگی",cat:"کمربند",price:260000,emoji:"〰️",desc:"استایل خیابانی",sizes:["100","110","120","130"]},
+{id:12,name:"کلاه کپ",cat:"کلاه کپ",price:1290000,emoji:"🧢",desc:"اکسسوری روزمره",sizes:["فری‌سایز"]}
+];
+
+let active="همه محصولات";
+let cart=[];
+let lastTracking="";
+
+const $=id=>document.getElementById(id);
+const money=n=>new Intl.NumberFormat("fa-IR").format(n)+" تومان";
+
+function toast(message){
+ const el=$("toast");el.textContent=message;el.style.display="block";
+ clearTimeout(window.toastTimer);
+ window.toastTimer=setTimeout(()=>el.style.display="none",2800);
+}
+
+function renderCategories(){
+ $("categories").innerHTML=categories.map(c=>
+ `<button class="chip ${c===active?"active":""}" onclick="setCategory('${c}')">${c}</button>`
+ ).join("");
+}
+function setCategory(c){active=c;renderCategories();renderProducts();}
+
+function renderProducts(){
+ const list=active==="همه محصولات"?products:products.filter(p=>p.cat===active);
+ $("productCount").textContent=new Intl.NumberFormat("fa-IR").format(list.length)+" مدل";
+ $("products").innerHTML=list.map(p=>`
+ <article class="product">
+ <div class="product-image"><span class="tag">${p.cat}</span><span class="emoji">${p.emoji}</span></div>
+ <div class="product-info">
+ <h3>${p.name}</h3><p>${p.desc}</p>
+ <div class="field"><label for="size-${p.id}">انتخاب سایز / اندازه</label>
+ <select id="size-${p.id}">${p.sizes.map(s=>`<option value="${s}">${s}</option>`).join("")}</select></div>
+ <div class="product-bottom">
+ <span class="price">${p.price===null?'<a href="https://t.me/Reralo" target="_blank" rel="noopener">استعلام در پیوی ↗</a>':money(p.price)}</span>
+ <button class="add" onclick="addToCart(${p.id})">+ افزودن</button>
+ </div></div></article>`).join("");
+}
+
+function addToCart(id){
+ const p=products.find(x=>x.id===id);
+ const size=$("size-"+id).value;
+ const old=cart.find(x=>x.id===id&&x.size===size);
+ if(old)old.qty++;
+ else cart.push({...p,size,qty:1});
+ renderCart();toast(p.name+" به سبد خرید اضافه شد.");
+}
+function changeQty(id,size,delta){
+ const item=cart.find(x=>x.id===id&&x.size===size);
+ if(!item)return;
+ item.qty+=delta;
+ if(item.qty<=0)cart=cart.filter(x=>!(x.id===id&&x.size===size));
+ renderCart();
+}
+function removeItem(id,size){
+ cart=cart.filter(x=>!(x.id===id&&x.size===size));renderCart();
+}
+function renderCart(){
+ const count=cart.reduce((s,x)=>s+x.qty,0);
+ const total=cart.reduce((s,x)=>s+(x.price===null?0:x.price*x.qty),0);
+ const variable=cart.some(x=>x.price===null);
+ $("cartCount").textContent=new Intl.NumberFormat("fa-IR").format(count);
+ $("cartTotal").textContent=money(total)+(variable?" + استعلام قیمت بدلیجات":"");
+ if(!cart.length){$("cartItems").innerHTML='<div class="muted">سبد خرید خالی است.</div>';return;}
+ $("cartItems").innerHTML=cart.map(x=>`
+ <div class="cart-item"><div><strong>${x.name}</strong>
+ <small>سایز: ${x.size} · ${x.price===null?"قیمت: استعلام در پیوی":money(x.price)}</small>
+ <button class="chip" style="margin-top:6px" onclick="removeItem(${x.id},'${x.size}')">حذف</button></div>
+ <div class="qty"><button onclick="changeQty(${x.id},'${x.size}',-1)">−</button><span>${x.qty}</span><button onclick="changeQty(${x.id},'${x.size}',1)">+</button></div></div>`).join("");
+}
+
+function makeCode(){
+ const chars="ABCDEFGHJKLMNPQRS
